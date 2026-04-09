@@ -113,22 +113,47 @@ document.addEventListener('DOMContentLoaded', () => {
     rsvpForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // In a real scenario, this would send an API request (e.g., to Formspree or Google Sheets)
-        // For now, we simulate success
-        
         const submitBtn = rsvpForm.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Sending...';
         
-        setTimeout(() => {
+        const name = document.getElementById('name').value;
+        const attendance = document.getElementById('attendance').value;
+        const guests = document.getElementById('guests').value || '0';
+
+        // Send data to Formsubmit's AJAX endpoint
+        fetch('https://formsubmit.co/ajax/andhavarapurahul@gmail.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                attendance: attendance === 'joyfully_accepts' ? 'Joyfully Accepts' : 'Regretfully Declines',
+                guests: guests,
+                _subject: 'New RSVP from ' + name // Customizes the email subject line
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
             rsvpForm.reset();
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Send RSVP';
-            formMessage.classList.remove('hidden');
+            formMessage.innerText = 'Thank you! Your RSVP has been sent.';
+            formMessage.classList.remove('hidden', 'text-red-600');
+            formMessage.classList.add('text-green-600');
             
             setTimeout(() => {
                 formMessage.classList.add('hidden');
             }, 5000);
-        }, 1500);
+        })
+        .catch(error => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Send RSVP';
+            formMessage.innerText = 'Oops! Something went wrong. Please try again.';
+            formMessage.classList.remove('hidden', 'text-green-600');
+            formMessage.classList.add('text-red-600');
+        });
     });
 });

@@ -4,8 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. Countdown Timer ---
     const countdownElement = document.getElementById('countdown');
-    // Set wedding date to May 10, 2026 as a placeholder (user can easily change this)
-    const weddingDate = new Date('May 10, 2026 08:00:00').getTime();
+    
+    // Set wedding date from the HTML data attribute, or fallback to Aug 26, 2026
+    const weddingDate = new Date(countdownElement.dataset.date || '2026-08-26T00:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();

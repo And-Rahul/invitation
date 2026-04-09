@@ -58,8 +58,8 @@
 
     <!-- Hero Section -->
     <header class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-maroon-900">
-        <!-- Overlay Pattern -->
-        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23D4AF37\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <!-- Background Image & Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');"></div>
         
         <div class="z-10 px-4 hero-content">
             <p class="font-serif text-gold-500 tracking-[0.3em] uppercase mb-4 text-sm md:text-base">We are getting married</p>
@@ -67,12 +67,12 @@
             <div class="flex items-center justify-center space-x-4 font-serif text-ivory/90 text-lg md:text-2xl">
                 <span>Save the Date</span>
                 <span class="w-12 h-px bg-gold-500"></span>
-                <span class="text-gold-400 font-bold">2026</span>
+                <span class="text-gold-400 font-bold">26th Aug 2026</span>
             </div>
             
             <div class="mt-12">
                 <p class="font-serif text-ivory/80 text-sm mb-2">Countdown to Forever</p>
-                <div id="countdown" class="flex justify-center space-x-6 text-gold-500 font-serif text-2xl md:text-4xl">
+                <div id="countdown" data-date="2026-08-26T00:00:00" class="flex justify-center space-x-6 text-gold-500 font-serif text-2xl md:text-4xl">
                     <!-- JS Countdown injected here -->
                 </div>
             </div>
@@ -86,15 +86,20 @@
 
     <!-- Our Story Section -->
     <section id="story" class="py-24 bg-ivory">
-        <div class="max-w-4xl mx-auto px-4 text-center story-content">
-            <h2 class="font-script text-5xl md:text-7xl text-maroon-900 mb-6">Our Story</h2>
-            <div class="w-24 h-1 bg-gold-500 mx-auto mb-10"></div>
-            <p class="font-serif text-lg leading-relaxed text-gray-700 mb-8">
-                Every love story is beautiful, but ours is our favorite. What started as a simple meeting blossomed into a lifetime of friendship, respect, and deep love. We've shared countless laughs, supported each other through life's milestones, and now, we are ready to embark on our most beautiful journey yet.
-            </p>
-            <p class="font-serif text-lg leading-relaxed text-gray-700">
-                We cannot wait to celebrate the beginning of our forever with the people who mean the most to us. Join us as we tie the knot and create memories for a lifetime!
-            </p>
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 story-content">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Rahul & Sheetal" class="rounded-lg shadow-2xl border-4 border-white transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+            </div>
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="font-script text-5xl md:text-7xl text-maroon-900 mb-6">Our Story</h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto md:mx-0 mb-10"></div>
+                <p class="font-serif text-lg leading-relaxed text-gray-700 mb-8">
+                    Every love story is beautiful, but ours is our favorite. What started as a simple meeting blossomed into a lifetime of friendship, respect, and deep love. We've shared countless laughs, supported each other through life's milestones, and now, we are ready to embark on our most beautiful journey yet.
+                </p>
+                <p class="font-serif text-lg leading-relaxed text-gray-700">
+                    We cannot wait to celebrate the beginning of our forever on <strong>26th Aug 2026</strong> with the people who mean the most to us. Join us as we tie the knot and create memories for a lifetime!
+                </p>
+            </div>
         </div>
     </section>
 
@@ -115,6 +120,7 @@
                     <h3 class="font-serif text-2xl text-maroon-900 font-bold mb-2">Mehendi & Haldi</h3>
                     <p class="text-gold-500 font-serif italic mb-4">A splash of colors and love</p>
                     <div class="text-gray-600 font-sans text-sm space-y-2">
+                    <p><strong>Date:</strong> 25th Aug 2026</p>
                         <p><strong>Time:</strong> 10:00 AM Onwards</p>
                         <p><strong>Dress Code:</strong> Vibrant Yellows & Greens</p>
                     </div>
@@ -128,6 +134,7 @@
                     <h3 class="font-serif text-2xl text-maroon-900 font-bold mb-2">The Wedding</h3>
                     <p class="text-gold-500 font-serif italic mb-4">The holy matrimony</p>
                     <div class="text-gray-600 font-sans text-sm space-y-2">
+                    <p><strong>Date:</strong> 26th Aug 2026</p>
                         <p><strong>Time:</strong> Muhurtham at 8:00 PM</p>
                         <p><strong>Dress Code:</strong> Traditional Indian</p>
                     </div>
@@ -141,6 +148,7 @@
                     <h3 class="font-serif text-2xl text-maroon-900 font-bold mb-2">Reception</h3>
                     <p class="text-gold-500 font-serif italic mb-4">An evening of celebration</p>
                     <div class="text-gray-600 font-sans text-sm space-y-2">
+                    <p><strong>Date:</strong> 27th Aug 2026</p>
                         <p><strong>Time:</strong> 7:30 PM Onwards</p>
                         <p><strong>Dress Code:</strong> Formals / Evening Wear</p>
                     </div>

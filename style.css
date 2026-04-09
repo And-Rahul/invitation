@@ -1,0 +1,36 @@
+/* Custom Styles for Rahul & Sheetal Wedding Website */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #FFFDF6; 
+}
+::-webkit-scrollbar-thumb {
+    background: #D4AF37; 
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5C0F15; 
+}
+
+/* Base selection color */
+::selection {
+    background: #F1D570;
+    color: #5C0F15;
+}
+
+/* Hide scrollbar for cleaner look in specific sections if needed */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

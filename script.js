@@ -132,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: name,
                 attendance: attendance === 'joyfully_accepts' ? 'Joyfully Accepts' : 'Regretfully Declines',
                 guests: guests,
-                _subject: 'New RSVP from ' + name // Customizes the email subject line
+                _subject: 'New RSVP from ' + name, // Customizes the email subject line
+                _captcha: 'false' // Disables the reCAPTCHA for background AJAX submissions
             })
         })
         .then(response => response.json())

@@ -225,7 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const enterBtn = document.getElementById('enter-btn');
     
     if (enterBtn && welcomeOverlay) {
-        enterBtn.addEventListener('click', () => {
+        let hasEntered = false;
+        
+        const enterSite = () => {
+            if (hasEntered) return;
+            hasEntered = true;
+            
             // 1. Play the music (100% guaranteed to work because it is triggered by a direct click)
             bgMusic.play().catch(e => console.log("Audio play error:", e));
             
@@ -242,7 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.add('overflow-x-hidden');
                 ScrollTrigger.refresh(); // Recalculate GSAP animations
             }, 1000);
-        });
+        };
+
+        // Allow users to click the button OR anywhere on the background overlay
+        enterBtn.addEventListener('click', enterSite);
+        welcomeOverlay.addEventListener('click', enterSite);
     } else {
         initLampAnimations();
     }

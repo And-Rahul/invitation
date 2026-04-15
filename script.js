@@ -107,37 +107,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Parallax Lamps
-    gsap.utils.toArray('.parallax-lamp').forEach(lamp => {
-        const speed = parseFloat(lamp.dataset.speed || "1");
-        
-        // Generate random durations and distances for a more organic, varied feel
-        const randomDuration = 5.2 + Math.random() * 1.5; // Between 1.2s and 2.7s
-        const randomMargin = 200 + Math.random() * 100; // Between 50px and 100px
+    function initLampAnimations() {
+        gsap.utils.toArray('.parallax-lamp').forEach(lamp => {
+            const speed = parseFloat(lamp.dataset.speed || "1");
+            
+            // Generate random durations and distances for a more organic, varied feel
+            const randomDuration = 5.2 + Math.random() * 1.5; // Between 1.2s and 2.7s
+            const randomMargin = 200 + Math.random() * 100; // Between 50px and 100px
 
-        // 1. Fade Up Entrance Animation
-        gsap.from(lamp, {
-            opacity: 0,
-            marginTop: randomMargin, // Fades up gracefully without conflicting with the Y parallax translation
-            duration: randomDuration,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: lamp,
-                start: 'top 95%', // Starts right as the lamp is about to enter the screen
-            }
-        });
+            // 1. Fade Up Entrance Animation
+            gsap.from(lamp, {
+                opacity: 0,
+                marginTop: randomMargin, // Fades up gracefully without conflicting with the Y parallax translation
+                duration: randomDuration,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: lamp,
+                    start: 'top 95%', // Starts right as the lamp is about to enter the screen
+                }
+            });
 
-        // 2. Parallax Scroll Effect
-        gsap.to(lamp, {
-            y: 300 * speed, // Moves the element downwards as you scroll, creating a slower scroll effect
-            ease: 'none',
-            scrollTrigger: {
-                trigger: lamp.parentElement,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-            }
+            // 2. Parallax Scroll Effect
+            gsap.to(lamp, {
+                y: 300 * speed, // Moves the element downwards as you scroll, creating a slower scroll effect
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: lamp.parentElement,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
         });
-    });
+    }
 
     // --- 3. RSVP Form Submission ---
     const rsvpForm = document.getElementById('rsvp-form');
@@ -217,20 +219,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Autoplay Solution (Unmuted) ---
-    // Attempt to play the music with sound immediately.
-    const playPromise = bgMusic.play();
+    // --- 5. Welcome Overlay & Audio Unlock ---
+    // The industry standard approach to bypass strict browser autoplay blocks.
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const enterBtn = document.getElementById('enter-btn');
     
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            // If the browser blocks it, wait for the user to interact with the page (click or scroll)
-            console.log("Browser blocked autoplay. Waiting for user interaction to play music.");
-            const playOnInteract = () => {
-                bgMusic.play().catch(e => console.log(e));
-                ['click', 'touchstart', 'scroll'].forEach(evt => document.removeEventListener(evt, playOnInteract));
-            };
+    if (enterBtn && welcomeOverlay) {
+        enterBtn.addEventListener('click', () => {
+            // 1. Play the music (100% guaranteed to work because it is triggered by a direct click)
+            bgMusic.play().catch(e => console.log("Audio play error:", e));
             
-            ['click', 'touchstart', 'scroll'].forEach(evt => document.addEventListener(evt, playOnInteract, { once: true, passive: true }));
+            // 2. Fade out the overlay
+            welcomeOverlay.style.opacity = '0';
+            
+            // Start lamp fade-up animations
+            initLampAnimations();
+            
+            // 3. Remove overlay and restore scrolling
+            setTimeout(() => {
+                welcomeOverlay.style.display = 'none';
+                document.body.classList.remove('overflow-hidden');
+                document.body.classList.add('overflow-x-hidden');
+                ScrollTrigger.refresh(); // Recalculate GSAP animations
+            }, 1000);
         });
+    } else {
+        initLampAnimations();
     }
 });

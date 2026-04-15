@@ -38,7 +38,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body class="bg-ivory text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-ivory text-gray-800 font-sans antialiased overflow-hidden">
+
+    <!-- Welcome Overlay -->
+    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-maroon-900 flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('Gemini_Generated_Image_gm1gmmgm1gmmgm1g.png');"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="font-script text-5xl md:text-7xl text-ivory mb-6 drop-shadow-lg">Rahul & Sheetal</h1>
+            <p class="font-serif text-gold-400 mb-8 text-lg tracking-widest uppercase">Are getting married</p>
+            <button id="enter-btn" class="bg-gold-500 hover:bg-gold-400 text-maroon-900 font-serif font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg flex items-center gap-2 mx-auto cursor-pointer animate-bounce">
+                <span>Open Invitation</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+        </div>
+    </div>
 
     <!-- Background Music -->
     <audio id="bg-music" loop preload="auto">
@@ -80,22 +93,22 @@
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30" style="background-image: url('Gemini_Generated_Image_gm1gmmgm1gmmgm1g.png');"></div>
         
         <!-- Parallax Lamps (Left Cluster) -->
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-160 left-2 md:left-8 w-16 md:w-24 opacity-80 drop-shadow-xl" data-speed="0.8">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-140 left-16 md:left-32 w-24 md:w-36 opacity-40 drop-shadow-2xl" data-speed="1.2">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 left-36 md:left-64 w-12 md:w-20 opacity-70 drop-shadow-lg" data-speed="0.9">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 left-10 md:left-20 w-10 md:w-14 opacity-60 drop-shadow-md" data-speed="1.0">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-2 left-24 md:left-44 w-8 md:w-12 opacity-50 drop-shadow-sm" data-speed="0.7">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 left-48 md:left-80 w-10 md:w-16 opacity-75 drop-shadow-lg" data-speed="1.4">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-4 left-1/4 md:left-[35%] w-6 md:w-10 opacity-40 drop-shadow" data-speed="0.85">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-160 left-2 md:left-8 w-16 md:w-24 opacity-80 drop-shadow-xl rotate-6" data-speed="0.8">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-140 left-16 md:left-32 w-24 md:w-36 opacity-40 drop-shadow-2xl -rotate-3" data-speed="1.2">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 left-36 md:left-64 w-12 md:w-20 opacity-70 drop-shadow-lg rotate-12" data-speed="0.9">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 left-10 md:left-20 w-10 md:w-14 opacity-60 drop-shadow-md -rotate-6" data-speed="1.0">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-2 left-24 md:left-44 w-8 md:w-12 opacity-50 drop-shadow-sm rotate-3" data-speed="0.7">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 left-48 md:left-80 w-10 md:w-16 opacity-75 drop-shadow-lg -rotate-12" data-speed="1.4">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-4 left-1/4 md:left-[35%] w-6 md:w-10 opacity-40 drop-shadow rotate-2" data-speed="0.85">
         
         <!-- Parallax Lamps (Right Cluster) -->
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-160 right-2 md:right-8 w-16 md:w-24 opacity-80 drop-shadow-xl scale-x-[-1]" data-speed="0.85">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-140 right-16 md:right-32 w-24 md:w-36 opacity-40 drop-shadow-2xl scale-x-[-1]" data-speed="1.15">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 right-36 md:right-64 w-12 md:w-20 opacity-70 drop-shadow-lg scale-x-[-1]" data-speed="0.95">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 right-10 md:right-20 w-10 md:w-14 opacity-60 drop-shadow-md scale-x-[-1]" data-speed="1.1">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-2 right-24 md:right-44 w-8 md:w-12 opacity-50 drop-shadow-sm scale-x-[-1]" data-speed="0.65">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 right-48 md:right-80 w-10 md:w-16 opacity-75 drop-shadow-lg scale-x-[-1]" data-speed="1.35">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-4 right-1/4 md:right-[35%] w-6 md:w-10 opacity-40 drop-shadow scale-x-[-1]" data-speed="0.9">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-160 right-2 md:right-8 w-16 md:w-24 opacity-80 drop-shadow-xl scale-x-[-1] -rotate-6" data-speed="0.85">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-140 right-16 md:right-32 w-24 md:w-36 opacity-40 drop-shadow-2xl scale-x-[-1] rotate-3" data-speed="1.15">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 right-36 md:right-64 w-12 md:w-20 opacity-70 drop-shadow-lg scale-x-[-1] -rotate-12" data-speed="0.95">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 right-10 md:right-20 w-10 md:w-14 opacity-60 drop-shadow-md scale-x-[-1] rotate-6" data-speed="1.1">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-2 right-24 md:right-44 w-8 md:w-12 opacity-50 drop-shadow-sm scale-x-[-1] -rotate-3" data-speed="0.65">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 right-48 md:right-80 w-10 md:w-16 opacity-75 drop-shadow-lg scale-x-[-1] rotate-12" data-speed="1.35">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-4 right-1/4 md:right-[35%] w-6 md:w-10 opacity-40 drop-shadow scale-x-[-1] -rotate-2" data-speed="0.9">
 
         <div class="z-10 px-4 hero-content">
             <p class="font-serif text-gold-500 tracking-[0.3em] uppercase mb-4 text-sm md:text-base">We are getting married</p>
@@ -125,8 +138,8 @@
     <!-- Our Story Section -->
     <section id="story" class="py-24 bg-ivory relative overflow-hidden">
         <!-- Parallax Lamps -->
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 left-10 md:left-20 w-20 md:w-28 opacity-60 drop-shadow-md" data-speed="1.1">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 right-10 md:right-24 w-24 md:w-32 opacity-70 drop-shadow-lg scale-x-[-1]" data-speed="1.3">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 left-10 md:left-20 w-20 md:w-28 opacity-60 drop-shadow-md -rotate-6" data-speed="1.1">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 right-10 md:right-24 w-24 md:w-32 opacity-70 drop-shadow-lg scale-x-[-1] rotate-12" data-speed="1.3">
 
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 story-content">
             <div class="md:w-1/2">
@@ -148,8 +161,8 @@
     <!-- Events Section -->
     <section id="events" class="py-24 bg-maroon-50 relative overflow-hidden border-t border-b border-gold-500/20">
         <!-- Parallax Lamps -->
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 left-8 md:left-16 w-16 md:w-24 opacity-50 drop-shadow-md" data-speed="0.9">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-12 right-12 md:right-32 w-20 md:w-32 opacity-60 drop-shadow-lg scale-x-[-1]" data-speed="1.2">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 left-8 md:left-16 w-16 md:w-24 opacity-50 drop-shadow-md rotate-12" data-speed="0.9">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-12 right-12 md:right-32 w-20 md:w-32 opacity-60 drop-shadow-lg scale-x-[-1] -rotate-6" data-speed="1.2">
 
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16 event-header">
@@ -206,8 +219,8 @@
     <!-- Venue Section -->
     <section id="venue" class="py-24 bg-ivory relative overflow-hidden">
         <!-- Parallax Lamps -->
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 left-12 md:left-40 w-24 md:w-32 opacity-60 drop-shadow-md" data-speed="1.15">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 right-8 md:right-20 w-16 md:w-24 opacity-50 drop-shadow-sm scale-x-[-1]" data-speed="0.85">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-10 left-12 md:left-40 w-24 md:w-32 opacity-60 drop-shadow-md -rotate-3" data-speed="1.15">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-6 right-8 md:right-20 w-16 md:w-24 opacity-50 drop-shadow-sm scale-x-[-1] rotate-6" data-speed="0.85">
 
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 venue-content">
             <div class="md:w-1/2 text-center md:text-left">
@@ -245,8 +258,8 @@
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23D4AF37\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
         
         <!-- Parallax Lamps -->
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 left-16 md:left-32 w-20 md:w-28 opacity-70 drop-shadow-lg" data-speed="1.05">
-        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-12 right-10 md:right-24 w-24 md:w-36 opacity-60 drop-shadow-md scale-x-[-1]" data-speed="1.25">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-8 left-16 md:left-32 w-20 md:w-28 opacity-70 drop-shadow-lg rotate-3" data-speed="1.05">
+        <img src="lamp.png" alt="Decorative Lamp" class="parallax-lamp absolute -top-12 right-10 md:right-24 w-24 md:w-36 opacity-60 drop-shadow-md scale-x-[-1] -rotate-12" data-speed="1.25">
 
         <div class="max-w-2xl mx-auto px-4 relative z-10 rsvp-content">
             <h2 class="font-script text-5xl md:text-7xl text-ivory mb-4">Be Our Guest</h2>

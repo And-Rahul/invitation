@@ -153,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = 'Sending...';
         
         const name = document.getElementById('name').value;
-        const attendance = document.getElementById('attendance').value;
         const guests = document.getElementById('guests').value || '0';
 
         // Send data to Formsubmit's AJAX endpoint
@@ -165,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({
                 name: name,
-                attendance: attendance === 'joyfully_accepts' ? 'Joyfully Accepts' : 'Regretfully Declines',
                 guests: guests,
                 _subject: 'New RSVP from ' + name, // Customizes the email subject line
                 _captcha: 'false' // Disables the reCAPTCHA for background AJAX submissions

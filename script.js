@@ -1,7 +1,32 @@
 // script.js - Interactive elements and animations
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+    const audio = document.getElementById("bg-music");
+
+    function fadeInAudio(audioElement, durationInSeconds) {
+        // Start at zero volume
+        audioElement.volume = 0.3;
+        audioElement.play();
+
+        const fadeInterval = 50; // Milliseconds between steps
+        const totalSteps = (durationInSeconds * 1000) / fadeInterval;
+        const volumeIncrement = 1 / totalSteps;
+
+        const intervalId = setInterval(() => {
+        if (audioElement.volume < 1) {
+            // Prevent floating point errors by capping at 1
+            audioElement.volume = Math.min(1, audioElement.volume + volumeIncrement);
+        } else {
+            clearInterval(intervalId); // Stop interval when max volume is reached
+        }
+        }, fadeInterval);
+    }
+
+    // Example: Fade in over 3 seconds when the page triggers it
+    // Note: Modern browsers require a user interaction (like a click) before audio can play
+    window.addEventListener('click', () => {
+        fadeInAudio(audio, 3);
+    }, { once: true }); // Runs only on the first click
     // --- 1. Countdown Timer ---
     const countdownElement = document.getElementById('countdown');
     
